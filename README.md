@@ -34,3 +34,43 @@ testing of the LiveScore website.
 
 3. Run tests:
    python -m pytest -v --headed
+
+## Automated Test Cases
+
+### TC-001: LiveScore Football Homepage
+
+**Test Type:** Smoke Testing
+
+**Objective:**
+Verify that the LiveScore football homepage
+loads successfully and displays the expected title.
+
+**Preconditions:**
+- Python environment configured
+- Playwright and Pytest installed
+- Chromium browser installed
+- Internet connection available
+
+**Test Steps:**
+1. Launch Chromium using Playwright.
+2. Navigate to https://www.livescore.com/en/football/
+3. Verify the HTTP response status is 200.
+4. Verify that the page title contains "LiveScore".
+
+**Expected Results:**
+- Website responds with HTTP 200.
+- Page title contains "LiveScore".
+- No assertion failures occur.
+
+**Actual Results:**
+- LiveScore returned HTTP 200.
+- Page title assertion passed.
+- Pytest completed with 1 passed and 1 warning.
+
+**Test Status:** PASSED
+
+**Execution Date:** November 10, 2026
+
+**Automation Tools:** Python, Playwright, Pytest
+
+**Execution Browser:** Chromium
