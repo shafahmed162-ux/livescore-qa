@@ -74,3 +74,46 @@ loads successfully and displays the expected title.
 **Automation Tools:** Python, Playwright, Pytest
 
 **Execution Browser:** Chromium
+
+## Automated Test Coverage
+
+| ID | Test Case | Latest Result |
+|---|---|---|
+| TC-001 | LiveScore Homepage | Passed |
+| TC-002 | Football Navigation | Passed |
+| TC-003 | Match Information | Passed |
+
+## Framework Architecture
+
+The project uses the Page Object Model (POM)
+design pattern to separate page interactions
+from test logic.
+
+### Project Structure
+
+- `pages/` - Reusable page objects
+- `tests/` - Automated test scripts
+- `docs/` - Manual testing documentation
+
+### Implemented Features
+
+- Browser automation with Playwright
+- Test execution with Pytest
+- Football homepage validation
+- Football navigation testing
+- Match information verification
+- Reusable page object for football navigation
+
+## QA Documentation
+
+- [Test Plan](docs/test-plan.md)
+- [Manual Test Cases](docs/manual-test-cases.md)
+- [Bug Report Template](docs/bug-report-template.md)
+
+## Current Limitations
+
+- Tests currently run using Chromium.
+- Match content may change over time.
+- Some locators require further refinement.
+- A Pytest dependency deprecation warning remains.
+- API testing and CI/CD are planned future improvements.
