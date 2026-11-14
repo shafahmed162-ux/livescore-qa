@@ -117,3 +117,45 @@ from test logic.
 - Some locators require further refinement.
 - A Pytest dependency deprecation warning remains.
 - API testing and CI/CD are planned future improvements.
+
+## Test Execution Results
+
+### Automated Cross-Browser Testing
+
+**Execution Date:** November 13, 2026
+
+| Browser | Passed | Failed |
+|---------|--------|--------|
+| Chromium | 4 | 0 |
+| Firefox | 4 | 0 |
+| WebKit | 4 | 0 |
+| **Total** | **12** | **0** |
+
+All four automated tests passed across three browser engines.
+
+### Manual Testing
+
+**Execution Date:** November 13, 2026
+
+| Test Case | Description | Status |
+|-----------|-------------|--------|
+| MTC-001 | Homepage Loads | PASS |
+| MTC-002 | Football Navigation | PASS |
+| MTC-003 | Hockey Navigation | PASS |
+| MTC-004 | Match Details | PASS |
+
+**Manual execution:** 4 passed, 0 failed, 6 not run.
+
+### Known Observations
+
+During MTC-001, a skeleton loading placeholder above the football scores remained visible after 30 seconds in both normal Chrome and Incognito mode.
+
+This is an unconfirmed UI issue requiring further investigation.
+
+### Test Environment
+
+- Python 3.14.10
+- Pytest 9.1.1
+- pytest-playwright 0.10.0
+- Playwright 1.65.0
+- macOS

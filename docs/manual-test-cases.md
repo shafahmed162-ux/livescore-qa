@@ -23,72 +23,104 @@ Operating System: macOS
 
 ---
 
-## MTC-001: Homepage Loads
+# MTC-001: Homepage Loads
 
 **Precondition:** Internet connection available.
 
 **Steps:**
-1. Open Chromium.
-2. Navigate to https://www.livescore.com/
+1. Open Google Chrome.
+2. Navigate to https://www.livescore.com/.
 3. Observe whether the page loads.
 
 **Expected Result:**
 The homepage loads and displays sports content.
 
-**Actual Result:** Not executed
+**Actual Result:**
+The homepage, navigation, and football scores loaded successfully.
 
-**Status:** Not Run
+**Status:** PASS
 
----
+**Observation:**
+A skeleton loading placeholder above the football scores remained visible after 30 seconds in both normal Chrome and Incognito mode.
 
-## MTC-002: Football Navigation
+**Follow-up:**
+Investigate whether the placeholder represents an advertisement, third-party widget, or failed content load.
 
-**Precondition:** LiveScore is accessible.
-
-**Steps:**
-1. Navigate to the Hockey section.
-2. Locate the Football navigation link.
-3. Click Football.
-
-**Expected Result:**
-The Football homepage opens and football
-content is displayed.
-
-**Actual Result:** Not executed manually
-
-**Status:** Not Run
+**Defect Status:** Unconfirmed
 
 ---
 
-## MTC-003: Hockey Navigation
+# MTC-002: Football Navigation
+
+**Precondition:**
+Internet connection available.
 
 **Steps:**
-1. Open the LiveScore football homepage.
-2. Click Hockey.
+1. Open Google Chrome.
+2. Navigate to https://www.livescore.com/en/hockey/.
+3. Click the Football tab in the navigation menu.
+4. Observe the navigation and football content.
 
 **Expected Result:**
-The Hockey section opens and displays
-hockey-related content.
+Clicking the Football tab navigates to the football homepage and displays football-related content.
 
-**Actual Result:** Not executed
+**Actual Result:**
+Clicking the Football tab successfully navigated to the football homepage. Football scores, fixtures, and competition listings were accessible.
 
-**Status:** Not Run
+**Status:** PASS
+
+**Observations:** None.
 
 ---
 
-## MTC-004: Match Details
+# MTC-003: Hockey Navigation
+
+**Precondition:**
+Internet connection available.
 
 **Steps:**
-1. Open the Football homepage.
-2. Select an available match.
-3. Open its details.
+1. Open Google Chrome.
+2. Navigate to https://www.livescore.com/en/.
+3. Click the Hockey tab in the navigation menu.
+4. Observe the navigation and hockey content.
 
 **Expected Result:**
-The correct match details page opens.
+Clicking the Hockey tab navigates to the hockey section and displays hockey-related scores, fixtures, and competition information.
 
-**Actual Result:** Not executed manually
+**Actual Result:**
+Clicking the Hockey tab successfully navigated to the hockey section. Hockey-related content was displayed correctly.
 
-**Status:** Not Run
+**Status:** PASS
+
+**Observations:** None.
+
+**Defect Status:** No defect observed.
+
+---
+
+# MTC-004: Match Details
+
+**Precondition:**
+Internet connection available.
+
+**Steps:**
+1. Open Google Chrome.
+2. Navigate to https://www.livescore.com/en/football/.
+3. Select a football match with available details.
+4. Open the match details page.
+5. Verify the participating teams and available match information.
+
+**Expected Result:**
+The match details page opens and displays the participating teams, match status, and available match information.
+
+**Actual Result:**
+The match details page opened successfully, and the expected match information was displayed correctly.
+
+**Status:** PASS
+
+**Observations:** None.
+
+**Defect Status:** No defect observed.
 
 ---
 
