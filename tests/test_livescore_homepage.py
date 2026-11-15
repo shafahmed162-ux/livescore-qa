@@ -1,7 +1,7 @@
 import re 
 from playwright.sync_api import Page, expect
 
-def test_livescore_homepage(page:page):
+def test_livescore_homepage(page: Page):
   # Step1: Open LiveScore football homepage
   response = page.goto(
     "https://www.livescore.com/en/football/", 
