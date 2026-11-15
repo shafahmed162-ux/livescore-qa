@@ -1,5 +1,6 @@
 
-from playwright.sync_api import Page, expect
+
+from playwright.sync_api import Page, expect, TimeoutError as PlaywrightTimeoutError
 
 
 class LiveScorePage:
@@ -36,6 +37,7 @@ class LiveScorePage:
         )
 
     
+    
     def navigate_to_football(self):
         age_button = self.page.get_by_role(
             "button",
@@ -43,11 +45,25 @@ class LiveScorePage:
             exact=True
         )
 
-        if age_button.is_visible():
+        try:
+            age_button.wait_for(
+                state="visible",
+                timeout=10000
+            )
+
+            print("Age verification screen detected.")
             age_button.click()
 
+            print("Age verification button clicked.")
+
+        except PlaywrightTimeoutError:
+            print("Age verification button did not appear.")
+
         expect(self.football_link).to_be_visible()
+
+        print("Attempting Football navigation.")
         self.football_link.click()
+
 
 
     def verify_football_page(self):
