@@ -159,3 +159,37 @@ This is an unconfirmed UI issue requiring further investigation.
 - pytest-playwright 0.10.0
 - Playwright 1.65.0
 - macOS
+
+## HTML Test Reporting
+
+LiveScore QA uses pytest-html to generate automated test reports.
+
+### Generate a Cross-Browser Report
+
+Run:
+
+```bash
+mkdir -p reports
+
+python -m pytest tests/ -v \
+  --browser chromium \
+  --browser firefox \
+  --browser webkit \
+  --html=reports/cross-browser-report.html \
+  --self-contained-html
+```
+
+Open the report on macOS:
+
+```bash
+open reports/cross-browser-report.html
+```
+
+### Latest Verified Results
+
+- Chromium: 4/4 passed
+- Firefox: 4/4 passed
+- WebKit: 4/4 passed
+- Total: 12/12 passed
+
+The test suite was executed successfully after improvements to the Page Object Model and match-information assertions.

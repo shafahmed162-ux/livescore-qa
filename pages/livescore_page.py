@@ -1,18 +1,37 @@
+
 from playwright.sync_api import Page, expect
 
 
 class LiveScorePage:
+    BASE_URL = "https://www.livescore.com"
+    FOOTBALL_URL = f"{BASE_URL}/en/"
+    HOCKEY_URL = f"{BASE_URL}/en/hockey/"
+
+    FOOTBALL_HEADING = (
+        "LiveScore - Latest Football Scores, "
+        "Results, Fixtures and Tables"
+    )
+
     def __init__(self, page: Page):
         self.page = page
+
+        # Navigation locators
         self.football_link = page.get_by_role(
             "link",
             name="Football Football",
             exact=True
         )
 
+        # Page content locators
+        self.football_heading = page.get_by_role(
+            "heading",
+            name=self.FOOTBALL_HEADING,
+            exact=True
+        )
+
     def open_hockey(self):
         self.page.goto(
-            "https://www.livescore.com/en/hockey/",
+            self.HOCKEY_URL,
             wait_until="domcontentloaded"
         )
 
@@ -21,13 +40,5 @@ class LiveScorePage:
         self.football_link.click()
 
     def verify_football_page(self):
-        expect(self.page).to_have_url(
-            "https://www.livescore.com/en/"
-        )
-
-        expect(
-            self.page.get_by_role(
-                "heading",
-                name="LiveScore - Latest Football Scores, Results, Fixtures and Tables"
-            )
-        ).to_be_visible()
+        expect(self.page).to_have_url(self.FOOTBALL_URL)
+        expect(self.football_heading).to_be_visible()
