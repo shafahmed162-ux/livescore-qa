@@ -35,9 +35,20 @@ class LiveScorePage:
             wait_until="domcontentloaded"
         )
 
+    
     def navigate_to_football(self):
+        age_button = self.page.get_by_role(
+            "button",
+            name="21 & Over",
+            exact=True
+        )
+
+        if age_button.is_visible():
+            age_button.click()
+
         expect(self.football_link).to_be_visible()
         self.football_link.click()
+
 
     def verify_football_page(self):
         expect(self.page).to_have_url(self.FOOTBALL_URL)
