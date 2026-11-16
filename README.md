@@ -193,3 +193,40 @@ open reports/cross-browser-report.html
 - Total: 12/12 passed
 
 The test suite was executed successfully after improvements to the Page Object Model and match-information assertions.
+
+
+## Continuous Integration (CI)
+
+LiveScore QA uses GitHub Actions to automatically run
+Playwright browser tests whenever changes are pushed
+to the main branch or a pull request targets main.
+
+### CI Environment
+- Operating System: Ubuntu Linux
+- Python: 3.13
+- Testing Framework: Pytest
+- Browser Automation: Playwright
+- Browsers: Chromium, Firefox, WebKit
+
+### Automated Test Coverage
+- Website availability
+- Football navigation
+- Homepage validation
+- Match information
+
+### Run Tests Locally
+
+```bash
+python -m pytest tests/ -v --browser chromium --browser firefox --browser webkit
+```
+
+The CI workflow also captures failure screenshots and
+Playwright traces to support debugging.
+
+### GitHub Actions
+
+Workflow: `.github/workflows/playwright-tests.yml`
+
+The workflow has completed successfully across all
+configured browsers.
+
