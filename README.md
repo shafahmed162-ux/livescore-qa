@@ -1,172 +1,136 @@
+
 # LiveScore QA Automation
 
-A beginner QA automation portfolio project
-using Python, Playwright, and Pytest.
+Automated functional and regression testing of the LiveScore
+website using Python, Playwright, and Pytest.
+
+This is an independent QA portfolio project and is not
+affiliated with LiveScore.
 
 ## Project Overview
-This project focuses on automated functional
-testing of the LiveScore website.
 
-## Technologies
+LiveScore QA demonstrates automated browser testing,
+cross-browser validation, reusable page objects,
+manual QA documentation, and continuous integration
+using GitHub Actions.
+
+The project focuses on testing key user journeys
+within the LiveScore football website.
+
+## Technology Stack
+
 - Python
 - Playwright
 - Pytest
+- pytest-playwright
+- pytest-html
 - Git and GitHub
-
-## Current Progress
-- Python environment configured
-- Playwright and Pytest installed
-- First browser automation test created
-
-## Future Goals
-- LiveScore homepage testing
-- Football navigation testing
-- Functional UI testing
-- Bug reporting and documentation
-
-## Running Tests
-
-1. Install dependencies:
-   python -m pip install -r requirements.txt
-
-2. Install the Chromium browser:
-   python -m playwright install chromium
-
-3. Run tests:
-   python -m pytest -v --headed
-
-## Automated Test Cases
-
-### TC-001: LiveScore Football Homepage
-
-**Test Type:** Smoke Testing
-
-**Objective:**
-Verify that the LiveScore football homepage
-loads successfully and displays the expected title.
-
-**Preconditions:**
-- Python environment configured
-- Playwright and Pytest installed
-- Chromium browser installed
-- Internet connection available
-
-**Test Steps:**
-1. Launch Chromium using Playwright.
-2. Navigate to https://www.livescore.com/en/football/
-3. Verify the HTTP response status is 200.
-4. Verify that the page title contains "LiveScore".
-
-**Expected Results:**
-- Website responds with HTTP 200.
-- Page title contains "LiveScore".
-- No assertion failures occur.
-
-**Actual Results:**
-- LiveScore returned HTTP 200.
-- Page title assertion passed.
-- Pytest completed with 1 passed and 1 warning.
-
-**Test Status:** PASSED
-
-**Execution Date:** November 10, 2026
-
-**Automation Tools:** Python, Playwright, Pytest
-
-**Execution Browser:** Chromium
+- GitHub Actions
 
 ## Automated Test Coverage
 
-| ID | Test Case | Latest Result |
-|---|---|---|
-| TC-001 | LiveScore Homepage | Passed |
-| TC-002 | Football Navigation | Passed |
-| TC-003 | Match Information | Passed |
+| Test | Description |
+|------|-------------|
+| Website Smoke Test | Checks HTTP response, URL, title, and visible football content |
+| Football Navigation | Navigates from Hockey to Football and verifies the destination |
+| Football Homepage | Verifies football content and the LIVE navigation link |
+| Match Information | Verifies participating teams on a football match page |
 
-## Framework Architecture
+Each scenario runs against Chromium, Firefox, and WebKit.
 
-The project uses the Page Object Model (POM)
-design pattern to separate page interactions
-from test logic.
+## Latest Local Test Results
 
-### Project Structure
-
-- `pages/` - Reusable page objects
-- `tests/` - Automated test scripts
-- `docs/` - Manual testing documentation
-
-### Implemented Features
-
-- Browser automation with Playwright
-- Test execution with Pytest
-- Football homepage validation
-- Football navigation testing
-- Match information verification
-- Reusable page object for football navigation
-
-## QA Documentation
-
-- [Test Plan](docs/test-plan.md)
-- [Manual Test Cases](docs/manual-test-cases.md)
-- [Bug Report Template](docs/bug-report-template.md)
-
-## Current Limitations
-
-- Tests currently run using Chromium.
-- Match content may change over time.
-- Some locators require further refinement.
-- A Pytest dependency deprecation warning remains.
-- API testing and CI/CD are planned future improvements.
-
-## Test Execution Results
-
-### Automated Cross-Browser Testing
-
-**Execution Date:** November 13, 2026
+Execution date: November 24, 2026
 
 | Browser | Passed | Failed |
 |---------|--------|--------|
 | Chromium | 4 | 0 |
 | Firefox | 4 | 0 |
 | WebKit | 4 | 0 |
-| **Total** | **12** | **0** |
+| Total | 12 | 0 |
 
-All four automated tests passed across three browser engines.
+All 12 tests passed during the latest reported full-suite
+execution. The homepage test was subsequently improved
+and passed individually across all three browsers.
 
-### Manual Testing
+## Project Structure
 
-**Execution Date:** November 13, 2026
+```text
+livescore-qa/
+├── .github/
+│   └── workflows/
+│       └── playwright-tests.yml
+├── docs/
+│   ├── manual-test-cases.md
+│   ├── test-plan.md
+│   └── bug-report-template.md
+├── pages/
+│   ├── __init__.py
+│   └── livescore_page.py
+├── reports/
+├── tests/
+│   ├── test_browser.py
+│   ├── test_football_navigation.py
+│   ├── test_livescore_homepage.py
+│   └── test_match_information.py
+├── requirements.txt
+└── README.md
+```
 
-| Test Case | Description | Status |
-|-----------|-------------|--------|
-| MTC-001 | Homepage Loads | PASS |
-| MTC-002 | Football Navigation | PASS |
-| MTC-003 | Hockey Navigation | PASS |
-| MTC-004 | Match Details | PASS |
+## Installation
 
-**Manual execution:** 4 passed, 0 failed, 6 not run.
+Clone the repository:
 
-### Known Observations
+```bash
+git clone https://github.com/shafahmed162-ux/livescore-qa.git
+cd livescore-qa
+```
 
-During MTC-001, a skeleton loading placeholder above the football scores remained visible after 30 seconds in both normal Chrome and Incognito mode.
+Create and activate a virtual environment:
 
-This is an unconfirmed UI issue requiring further investigation.
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
 
-### Test Environment
+Install dependencies:
 
-- Python 3.14.10
-- Pytest 9.1.1
-- pytest-playwright 0.10.0
-- Playwright 1.65.0
-- macOS
+```bash
+python -m pip install -r requirements.txt
+```
 
-## HTML Test Reporting
+Install supported browsers:
 
-LiveScore QA uses pytest-html to generate automated test reports.
+```bash
+python -m playwright install chromium firefox webkit
+```
 
-### Generate a Cross-Browser Report
+## Running Tests
 
-Run:
+Run the default Chromium tests:
+
+```bash
+python -m pytest -v
+```
+
+Run all three browsers:
+
+```bash
+python -m pytest -v \
+  --browser chromium \
+  --browser firefox \
+  --browser webkit
+```
+
+Run with the browser window visible:
+
+```bash
+python -m pytest -v --headed
+```
+
+## HTML Test Reports
+
+Generate a standalone HTML report:
 
 ```bash
 mkdir -p reports
@@ -179,54 +143,82 @@ python -m pytest tests/ -v \
   --self-contained-html
 ```
 
-Open the report on macOS:
+Open the generated report on macOS:
 
 ```bash
 open reports/cross-browser-report.html
 ```
 
-### Latest Verified Results
+## Page Object Model
 
-- Chromium: 4/4 passed
-- Firefox: 4/4 passed
-- WebKit: 4/4 passed
-- Total: 12/12 passed
+The project uses the Page Object Model (POM)
+to separate browser interactions from test assertions.
 
-The test suite was executed successfully after improvements to the Page Object Model and match-information assertions.
+The `LiveScorePage` class contains reusable functionality
+for opening pages, navigating between sports sections,
+and verifying the football homepage.
 
+This design improves readability and reduces repeated
+browser interaction code.
 
-## Continuous Integration (CI)
+## Continuous Integration
 
-LiveScore QA uses GitHub Actions to automatically run
-Playwright browser tests whenever changes are pushed
-to the main branch or a pull request targets main.
+GitHub Actions automatically executes the cross-browser
+test suite when:
 
-### CI Environment
-- Operating System: Ubuntu Linux
-- Python: 3.13
-- Testing Framework: Pytest
-- Browser Automation: Playwright
-- Browsers: Chromium, Firefox, WebKit
+- Changes are pushed to the main branch
+- Pull requests target main
+- The workflow is manually triggered
 
-### Automated Test Coverage
-- Website availability
-- Football navigation
-- Homepage validation
-- Match information
+The workflow uses Ubuntu and Python 3.13.
 
-### Run Tests Locally
+It also captures Playwright screenshots and traces when
+tests fail, helping investigate potential regressions.
 
-```bash
-python -m pytest tests/ -v --browser chromium --browser firefox --browser webkit
+Workflow:
+`.github/workflows/playwright-tests.yml`
+
+## Manual QA Documentation
+
+The project includes:
+
+- [Test Plan](docs/test-plan.md)
+- [Manual Test Cases](docs/manual-test-cases.md)
+- [Bug Report Template](docs/bug-report-template.md)
+
+Ten manual test cases have been documented.
+Four have been executed and passed; six remain unexecuted.
+
+An unresolved observation involving a persistent loading
+placeholder is recorded in the manual test documentation.
+It has not been confirmed as an application defect.
+
+## Known Limitations
+
+- LiveScore is a third-party website that may change.
+- Historical match pages may become unavailable.
+- Dynamic content and overlays can affect automation.
+- Some selectors may require maintenance over time.
+- Network conditions may affect browser tests.
+- Test results do not independently verify score accuracy.
+- Performance, mobile apps, and backend systems are
+  outside the current testing scope.
+
+## Skills Demonstrated
+
+- Functional and smoke testing
+- Automated regression testing
+- Cross-browser testing
+- Playwright browser automation
+- Python test development
+- Page Object Model architecture
+- Test reporting and debugging
+- Manual test planning and documentation
+- GitHub Actions continuous integration
 ```
 
-The CI workflow also captures failure screenshots and
-Playwright traces to support debugging.
+## Step 2 — Fix the bug report filename
 
-### GitHub Actions
+Your earlier file listing showed `docs/bug-report-template.d` rather than `.md`. If that is still the filename, run:
 
-Workflow: `.github/workflows/playwright-tests.yml`
-
-The workflow has completed successfully across all
-configured browsers.
-
+<CodeBlock language="bash">mv docs/bug-report-template.d docs/bug-report-template.md

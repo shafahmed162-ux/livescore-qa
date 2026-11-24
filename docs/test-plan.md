@@ -55,12 +55,27 @@ unexpected failures.
 Manually investigate website functionality and
 identify possible defects.
 
+
 ## 6. Test Environment
 
-Operating System: macOS
-Programming Language: Python 3.14
-Browser: Chromium
-Automation Framework: Playwright + Pytest
+### Local Testing
+- Operating System: macOS
+- Python: 3.14
+- Framework: Playwright + Pytest
+- Browsers: Chromium, Firefox, WebKit
+
+### Continuous Integration
+- Platform: GitHub Actions
+- Operating System: Ubuntu Linux
+- Python: 3.13
+- Browsers: Chromium, Firefox, WebKit
+
+### Test Execution
+- 4 automated test scenarios
+- 3 browser engines
+- 12 cross-browser test executions
+- Latest verified full-suite result: 12 passed, 0 failed
+
 
 ## 7. Risks and Limitations
 
@@ -71,13 +86,22 @@ Automation Framework: Playwright + Pytest
 - Tests cannot validate backend data accuracy without
   an independent trusted source.
 
+
 ## 8. Current Automated Test Cases
 
 | ID | Test Case | Status |
 |---|---|---|
-| TC-001 | Homepage loads successfully | Passed |
-| TC-002 | Football navigation works | Passed |
-| TC-003 | Match page displays team names | Passed |
+| TC-001 | LiveScore homepage validation | Passed |
+| TC-002 | Football navigation | Passed |
+| TC-003 | Match information verification | Passed |
+| TC-004 | Website smoke test | Passed |
+
+All four tests execute across Chromium, Firefox,
+and WebKit.
+
+Latest full-suite execution:
+November 24, 2026 — 12 passed, 0 failed.
+
 
 ## 9. Exit Criteria
 

@@ -1,18 +1,53 @@
-import re 
+
+import re
+
 from playwright.sync_api import Page, expect
 
+
 def test_livescore_homepage(page: Page):
-  # Step1: Open LiveScore football homepage
-  response = page.goto(
-    "https://www.livescore.com/en/football/", 
-    wait_until="domcontentloaded"
-  )
+    """
+    Verify football homepage content and
+    navigation are available to users.
+    """
 
-  # Step2: Check that the website responded
-  assert response is not None
-  assert response.status == 200
+    response = page.goto(
+        "https://www.livescore.com/en/",
+        wait_until="domcontentloaded",
+    )
 
-  # Step3: Verify the page title
-  expect(page).to_have_title(
-    re.compile("LiveScore", re.IGNORECASE)
-  )
+    assert response is not None
+    assert response.status == 200
+
+    # Confirm the main football heading is visible.
+    expect(
+        page.get_by_role(
+            "heading",
+            name=re.compile(
+                "Latest Football Scores",
+                re.IGNORECASE,
+            ),
+            level=1,
+        )
+    ).to_be_visible()
+
+    # Confirm the live football section exists.
+    expect(
+        page.get_by_role(
+            "link",
+            name="LIVE",
+            exact=True,
+        )
+    ).to_be_visible()
+
+    # Verify the live section points to
+    # the correct destination.
+    expect(
+        page.get_by_role(
+            "link",
+            name="LIVE",
+            exact=True,
+        )
+    ).to_have_attribute(
+        "href",
+        "/en/football/live/",
+    )

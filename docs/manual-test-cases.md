@@ -6,14 +6,15 @@ Website: https://www.livescore.com/
 Browser: Chromium
 Operating System: macOS
 
+
 ## Manual Test Case Matrix
 
 | ID | Test Case | Priority | Status |
 |---|---|---|---|
-| MTC-001 | Homepage loads | High | Not Run |
-| MTC-002 | Football navigation | High | Not Run |
-| MTC-003 | Hockey navigation | Medium | Not Run |
-| MTC-004 | Match details | High | Not Run |
+| MTC-001 | Homepage loads | High | PASS |
+| MTC-002 | Football navigation | High | PASS |
+| MTC-003 | Hockey navigation | Medium | PASS |
+| MTC-004 | Match details | High | PASS |
 | MTC-005 | Home and away teams | High | Not Run |
 | MTC-006 | Competition navigation | Medium | Not Run |
 | MTC-007 | Search functionality | High | Not Run |
@@ -21,7 +22,12 @@ Operating System: macOS
 | MTC-009 | Browser back navigation | Medium | Not Run |
 | MTC-010 | Responsive layout | Medium | Not Run |
 
----
+**Manual Testing Summary**
+- Total test cases: 10
+- Passed: 4
+- Failed: 0
+- Not executed: 6
+
 
 # MTC-001: Homepage Loads
 
